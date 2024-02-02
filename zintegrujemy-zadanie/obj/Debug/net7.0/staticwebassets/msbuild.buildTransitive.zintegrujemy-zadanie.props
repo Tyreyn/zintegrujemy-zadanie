@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\zintegrujemy-zadanie.props" />
+</Project>
