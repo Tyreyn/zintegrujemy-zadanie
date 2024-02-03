@@ -356,8 +356,8 @@
         "runtime": {
           "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
             "related": ".xml"
-          }
-        },
+        }
+      },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         },
@@ -448,12 +448,12 @@
         "runtime": {
           "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
             "related": ".xml"
-          }
+      }
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
-        }
-      },
+    }
+  },
       "System.Diagnostics.DiagnosticSource/6.0.1": {
         "type": "package",
         "dependencies": {
