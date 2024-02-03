@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj": {}
+    "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj": {
+    "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj",
+        "projectUniqueName": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj",
         "projectName": "zintegrujemy-zadanie",
-        "projectPath": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj",
+        "projectPath": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie.csproj",
         "packagesPath": "C:\\Users\\athos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\obj\\",
+        "outputPath": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\athos\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,16 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.15, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.5, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.1.118, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

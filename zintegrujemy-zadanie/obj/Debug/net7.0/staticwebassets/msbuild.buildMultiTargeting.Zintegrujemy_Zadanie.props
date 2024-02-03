@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Zintegrujemy_Zadanie.props" />
+</Project>
