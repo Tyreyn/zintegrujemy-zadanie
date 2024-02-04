@@ -2,6 +2,7 @@ namespace Zintegrujemy_Zadanie.Controllers
 {
     #region Usings
     using Microsoft.AspNetCore.Mvc;
+    using System.Text.RegularExpressions;
     using Zintegrujemy_Zadanie.Context;
     using Zintegrujemy_Zadanie.Helpers;
     #endregion
@@ -14,11 +15,6 @@ namespace Zintegrujemy_Zadanie.Controllers
     public class DataController : ControllerBase
     {
         #region Fields and Constants
-
-        /// <summary>
-        /// The current project directory.
-        /// </summary>
-        private readonly string projectDirectory = Directory.GetCurrentDirectory();
 
         /// <summary>
         /// The configuarion properties.
@@ -54,26 +50,28 @@ namespace Zintegrujemy_Zadanie.Controllers
         /// Download and save required files to project directory.
         /// </summary>
         [HttpGet("ReadData")]
-        public async Task Download()
+        public void Download()
         {
-            //foreach (KeyValuePair<string, string> file in GlobalVariables.FilesToDownload)
-            //{
-            //    bool downloadResult = FileDownloader.Download(
-            //        fileName: file.Key,
-            //        url: file.Value,
-            //        projectDirectory: this.projectDirectory);
+            this.dataContext.InitializeDataBase().Wait();
 
-            //    if (!downloadResult)
-            //    {
-            //        Console.WriteLine($"Was not able to download {file.Key}!");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine($"{file.Key} downloaded successful!");
-            //    }
-            //}
+            foreach (KeyValuePair<string, string> file in GlobalVariables.FilesToDownload)
+            {
+                object records;
+                bool downloadResult = FileDownloader.Download(
+                    fileName: file.Key,
+                    url: file.Value).Result;
 
-            await this.dataContext.InitializeDataBase();
+                if (!downloadResult)
+                {
+                    Console.WriteLine($"Was not able to download {file.Key}!");
+                }
+                else
+                {
+                    Console.WriteLine($"{file.Key} downloaded successful!");
+                    records = CsvReaderHelper.ReadFileAndSaveToList(file.Key);
+                    this.dataContext.InsertDataToTable(records, file.Key).Wait();
+                }
+            }
         }
         #endregion
     }

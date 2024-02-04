@@ -67,3 +67,5 @@ C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegruje
 C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegrujemy-zadanie\obj\Debug\net7.0\Zintegrujemy_Zadanie.pdb
 C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegrujemy-zadanie\obj\Debug\net7.0\Zintegrujemy_Zadanie.genruntimeconfig.cache
 C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegrujemy-zadanie\obj\Debug\net7.0\ref\Zintegrujemy_Zadanie.dll
+C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegrujemy-zadanie\bin\Debug\net7.0\CsvHelper.dll
+C:\Users\athos\source\repos\zintegrujemy-zadanie\zintegrujemy-zadanie\zintegrujemy-zadanie\bin\Debug\net7.0\System.Linq.Async.dll

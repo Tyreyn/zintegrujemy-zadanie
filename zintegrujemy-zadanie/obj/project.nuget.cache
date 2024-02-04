@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ccqkp2ajDK+psiMjw7deduDn1wYRZDXdEnFUIwQxmUNbkDXJT4Sg42h8O5DBzrl5b6FiIqPA0UyQzpg84rl3VQ==",
+  "dgSpecHash": "Y84KSe5Qt8SMsU5zBkpm7tgxKDNucX2CsrZbmS0sXUthjsY9a4pX1W5fPlfUQRw+ipEIYOOu8/Mskk0bVn8jGg==",
   "success": true,
   "projectFilePath": "C:\\Users\\athos\\source\\repos\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\zintegrujemy-zadanie\\Zintegrujemy_Zadanie.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\athos\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\athos\\.nuget\\packages\\csvhelper\\30.1.0\\csvhelper.30.1.0.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.15\\microsoft.aspnetcore.openapi.7.0.15.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
@@ -37,6 +38,7 @@
     "C:\\Users\\athos\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.35.0\\system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\athos\\.nuget\\packages\\system.linq.async\\4.0.0\\system.linq.async.4.0.0.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\athos\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Zintegrujemy_Zadanie")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4da5788ce7373e83a19744d7bc1dd6279ce3c14c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Zintegrujemy_Zadanie")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Zintegrujemy_Zadanie")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

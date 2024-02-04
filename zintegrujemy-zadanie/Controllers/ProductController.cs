@@ -39,7 +39,7 @@
         [HttpGet("SKU")]
         public IActionResult GetProductInfo(string SKU)
         {
-            Product product = new Product();
+            Products product = new Products();
             return this.Ok(product);
         }
         #endregion
