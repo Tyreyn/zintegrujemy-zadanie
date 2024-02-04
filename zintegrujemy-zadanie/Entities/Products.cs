@@ -64,6 +64,10 @@ namespace Zintegrujemy_Zadanie.Entities
         /// </summary>
         public string default_image { get; set; }
 
+
+        /// <summary>
+        /// Shipping time.
+        /// </summary>
         public string shipping { get; set; }
 
         #endregion

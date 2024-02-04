@@ -48,7 +48,7 @@ namespace Zintegrujemy_Zadanie.Helpers
                 CREATE TABLE dbo.Inventory
                 (
 	                product_id VARCHAR(255) PRIMARY KEY,
-	                sku VARCHAR(255) FOREIGN KEY REFERENCES Product(SKU),
+	                sku VARCHAR(255) UNIQUE,
 	                unit VARCHAR(255),
 	                qty VARCHAR(255),
 	                manufacturer_name VARCHAR(255),
@@ -62,7 +62,7 @@ namespace Zintegrujemy_Zadanie.Helpers
                 CREATE TABLE dbo.Prices
                 (
 	                Column1 VARCHAR(255) PRIMARY KEY,
-	                Column2 VARCHAR(255) FOREIGN KEY REFERENCES Product(SKU),
+	                Column2 VARCHAR(255) UNIQUE,
 	                Column3 VARCHAR(255),
 	                Column4 VARCHAR(255),
 	                Column5 VARCHAR(255),
@@ -92,8 +92,24 @@ namespace Zintegrujemy_Zadanie.Helpers
             VALUES(@product_id,@sku,@unit,@qty,@manufacturer_name,@shipping,@shipping_cost);";
         
         public static readonly string InsertPriceSqlCommand = @"use MagazineDB;
-            INSERT INTO dbo.Price(Column1,Column2,Column3,Column4,Column5,Column6)
+            INSERT INTO dbo.Prices(Column1,Column2,Column3,Column4,Column5,Column6)
             VALUES(@Column1,@Column2,@Column3,@Column4,@Column5,@Column6);";
+
+        public static readonly string SelectProductWhereSku = @"use MagazineDB;
+            SELECT 
+	            dbo.Product.name,
+	            dbo.Product.EAN,
+	            dbo.Product.producer_name,
+	            dbo.Product.category,
+	            dbo.Product.default_image,
+	            dbo.Inventory.qty,
+	            dbo.Inventory.unit,
+	            dbo.Prices.Column3,
+	            dbo.Inventory.shipping_cost
+            FROM dbo.Product
+            LEFT JOIN dbo.Inventory on dbo.Product.SKU = dbo.Inventory.sku
+            LEFT JOIN dbo.Prices on dbo.Product.SKU = dbo.Prices.Column2
+            WHERE dbo.Product.SKU = @sku;";
         #endregion
     }
 }
