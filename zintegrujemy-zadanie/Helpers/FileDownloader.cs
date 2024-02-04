@@ -1,5 +1,6 @@
 ﻿namespace Zintegrujemy_Zadanie.Helpers
 {
+    using System.ComponentModel;
     #region Usings
     using System.Net;
     #endregion
@@ -18,6 +19,7 @@
         #endregion
 
         #region Public Methods
+
         /// <summary>
         /// Download specific file.
         /// </summary>
@@ -27,13 +29,10 @@
         /// <param name="url">
         /// Downloadable file URL.
         /// </param>
-        /// <param name="projectDirectory">
-        /// The current project directory.
-        /// </param>
         /// <returns>
         /// True, if download was successful, otherwise false.
         /// </returns>
-        public static bool Download(string fileName, string url, string projectDirectory)
+        public static async Task<bool> Download(string fileName, string url)
         {
             DownloadableFileName = fileName;
             try
@@ -41,7 +40,7 @@
                 using (WebClient wc = new WebClient())
                 {
                     wc.DownloadProgressChanged += Wc_DownloadProgressChanged;
-                    wc.DownloadFileAsync(new Uri(url), Path.Combine(projectDirectory, fileName));
+                    await wc.DownloadFileTaskAsync(new Uri(url), Path.Combine(GlobalVariables.ProjectDirectory, fileName)).ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

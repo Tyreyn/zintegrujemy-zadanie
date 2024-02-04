@@ -1,7 +1,9 @@
 ﻿namespace Zintegrujemy_Zadanie.Context
 {
+    using Dapper;
     #region Usings
     using Microsoft.Data.SqlClient;
+    using Zintegrujemy_Zadanie.Entities;
     using Zintegrujemy_Zadanie.Helpers;
     #endregion
 
@@ -59,9 +61,38 @@
         /// <summary>
         /// Inserts data to table.
         /// </summary>
-        public async Task InsertDataToTable()
+        public async Task InsertDataToTable(object records, string tableName)
         {
-            ///TBD
+            string[] tmpTableName = tableName.Split('.');
+            switch (tmpTableName[0])
+            {
+                case "Products":
+                    using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("DefaultConnection")))
+                    {
+                        var rowsAffected = myConn.ExecuteAsync(GlobalVariables.InsertProductSqlCommand, records);
+                        Console.WriteLine($"{rowsAffected.Result} row(s) inserted.");
+                    }
+
+                    break;
+                case "Inventory":
+                    using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("DefaultConnection")))
+                    {
+                        var rowsAffected = myConn.ExecuteAsync(GlobalVariables.InsertInventorySqlCommand, records);
+                        Console.WriteLine($"{rowsAffected.Result} row(s) inserted.");
+                    }
+
+                    break;
+                case "Prices":
+                    using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("DefaultConnection")))
+                    {
+                        var rowsAffected = myConn.ExecuteAsync(GlobalVariables.InsertPriceSqlCommand, records);
+                        Console.WriteLine($"{rowsAffected.Result} row(s) inserted.");
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentException($"There is no {tableName} implemented!");
+            }
         }
         #endregion
     }
