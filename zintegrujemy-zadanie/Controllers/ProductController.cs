@@ -3,6 +3,7 @@
     #region Using
     using System.Data;
     using Microsoft.AspNetCore.Mvc;
+    using Zintegrujemy_Zadanie.Context;
     using Zintegrujemy_Zadanie.Entities;
     #endregion
 
@@ -12,7 +13,8 @@
     public class ProductController : ControllerBase
     {
         #region Fields and Constants
-
+        private IConfiguration configuration;
+        private DataAccess dataAccess;
         #endregion
 
         #region Constructors and Destructors
@@ -20,8 +22,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductController"/> class.
         /// </summary>
-        public ProductController()
+        public ProductController(IConfiguration configuration)
         {
+            this.dataAccess = new DataAccess(configuration);
+            this.configuration = configuration;
         }
         #endregion
 
@@ -39,8 +43,8 @@
         [HttpGet("SKU")]
         public IActionResult GetProductInfo(string SKU)
         {
-            Products product = new Products();
-            return this.Ok(product);
+            ProductInformation? product = this.dataAccess.SelectProductWhereSku(SKU).Result;
+            return product != null ? this.Ok(product) : this.NotFound($"There is no product with SKU: {SKU}");
         }
         #endregion
     }

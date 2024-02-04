@@ -1,5 +1,6 @@
 ﻿namespace Zintegrujemy_Zadanie.Context
 {
+    using Azure;
     using Dapper;
     #region Usings
     using Microsoft.Data.SqlClient;
@@ -93,6 +94,25 @@
                 default:
                     throw new ArgumentException($"There is no {tableName} implemented!");
             }
+        }
+
+        public async Task<ProductInformation> SelectProductWhereSku(string sku)
+        {
+            ProductInformation? productInformation = null;
+            using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("DefaultConnection")))
+            {
+                try
+                {
+                    productInformation = myConn.QueryFirst<ProductInformation>(GlobalVariables.SelectProductWhereSku, new { sku = sku });
+                    Console.WriteLine($"Read {productInformation.ToString()}");
+                    return productInformation;
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    Console.WriteLine($"There is no product with SKU:{sku}");
+                    return null;
+                }
+            }          
         }
         #endregion
     }
