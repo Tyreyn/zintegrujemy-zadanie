@@ -2,7 +2,6 @@ namespace Zintegrujemy_Zadanie.Controllers
 {
     #region Usings
     using Microsoft.AspNetCore.Mvc;
-    using System.Text.RegularExpressions;
     using Zintegrujemy_Zadanie.Context;
     using Zintegrujemy_Zadanie.Helpers;
     #endregion
@@ -24,7 +23,7 @@ namespace Zintegrujemy_Zadanie.Controllers
         /// <summary>
         /// The data access class.
         /// </summary>
-        private DataAccess dataContext;
+        private readonly IDataAccess dataAccess;
 
         #endregion
 
@@ -38,7 +37,19 @@ namespace Zintegrujemy_Zadanie.Controllers
         /// </param>
         public DataController(IConfiguration configuration)
         {
-            this.dataContext = new DataAccess(configuration);
+            switch (configuration["DatabaseType"])
+            {
+                case "MYSQL":
+                    this.dataAccess = new MySqlDataAccess(configuration);
+                    break;
+
+                case "SQLSERVER":
+                    this.dataAccess = new SqlServerDataAccess(configuration);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported database type");
+            }
+
             this.configuration = configuration;
         }
 
@@ -52,7 +63,7 @@ namespace Zintegrujemy_Zadanie.Controllers
         [HttpGet("ReadData")]
         public void Download()
         {
-            this.dataContext.InitializeDataBase().Wait();
+            this.dataAccess.InitializeDataBase().Wait();
 
             foreach (KeyValuePair<string, string> file in GlobalVariables.FilesToDownload)
             {
@@ -69,7 +80,7 @@ namespace Zintegrujemy_Zadanie.Controllers
                 {
                     Console.WriteLine($"{file.Key} downloaded successful!");
                     records = CsvReaderHelper.ReadFileAndSaveToList(file.Key);
-                    this.dataContext.InsertDataToTable(records, file.Key).Wait();
+                    this.dataAccess.InsertDataToTable(records, file.Key);
                 }
             }
         }

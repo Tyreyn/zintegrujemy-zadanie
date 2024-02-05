@@ -15,7 +15,7 @@
         /// <summary>
         /// Downloadable file name.
         /// </summary>
-        private static string DownloadableFileName;
+        private static string? downloadableFileName;
         #endregion
 
         #region Public Methods
@@ -34,7 +34,7 @@
         /// </returns>
         public static async Task<bool> Download(string fileName, string url)
         {
-            DownloadableFileName = fileName;
+            downloadableFileName = fileName;
             try
             {
                 using (WebClient wc = new WebClient())
@@ -57,7 +57,7 @@
         #region Private Methods
         private static void Wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Console.WriteLine($"\r file download progress: {DownloadableFileName}   -->    {e.ProgressPercentage}");
+            Console.WriteLine($"\r file download progress: {downloadableFileName}   -->    {e.ProgressPercentage}");
         }
         #endregion
     }
