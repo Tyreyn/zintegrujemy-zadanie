@@ -13,8 +13,16 @@
     public class ProductController : ControllerBase
     {
         #region Fields and Constants
-        private IConfiguration configuration;
-        private DataAccess dataAccess;
+
+        /// <summary>
+        /// The configuarion properties.
+        /// </summary>
+        private readonly IConfiguration configuration;
+
+        /// <summary>
+        /// The data access class.
+        /// </summary>
+        private readonly IDataAccess dataAccess;
         #endregion
 
         #region Constructors and Destructors
@@ -22,9 +30,27 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductController"/> class.
         /// </summary>
+        /// <param name="configuration">
+        /// The configuarion properties.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Unsupported database type.
+        /// </exception>
         public ProductController(IConfiguration configuration)
         {
-            this.dataAccess = new DataAccess(configuration);
+            switch (configuration["DatabaseType"])
+            {
+                case "MYSQL":
+                    this.dataAccess = new MySqlDataAccess(configuration);
+                    break;
+
+                case "SQLSERVER":
+                    this.dataAccess = new SqlServerDataAccess(configuration);
+                    break;
+                default:
+                    throw new ArgumentException("Unsupported database type");
+            }
+
             this.configuration = configuration;
         }
         #endregion
@@ -43,7 +69,7 @@
         [HttpGet("SKU")]
         public IActionResult GetProductInfo(string SKU)
         {
-            ProductInformation? product = this.dataAccess.SelectProductWhereSku(SKU).Result;
+            ProductInformation? product = this.dataAccess.SelectProductWhereSku(SKU);
             return product != null ? this.Ok(product) : this.NotFound($"There is no product with SKU: {SKU}");
         }
         #endregion

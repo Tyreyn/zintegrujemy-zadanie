@@ -8,47 +8,47 @@
         #region Fields and Constants
 
         /// <summary>
-        /// Product name.
+        /// Gets or sets product name.
         /// </summary>
         public string name { get; set; }
 
         /// <summary>
-        /// Product number.
+        /// Gets or sets product number.
         /// </summary>
         public string EAN { get; set; }
 
         /// <summary>
-        /// Supplier name.
+        /// Gets or sets supplier name.
         /// </summary>
         public string producer_name { get; set; }
 
         /// <summary>
-        /// Product Category.
+        /// Gets or sets product Category.
         /// </summary>
         public string category { get; set; }
 
         /// <summary>
-        /// URL address to product’s image.
+        /// Gets or sets URL address to product’s image.
         /// </summary>
         public string default_image { get; set; }
 
         /// <summary>
-        /// Type of unit the product is sold as.
+        /// Gets or sets type of unit the product is sold as.
         /// </summary>
         public string unit { get; set; }
 
         /// <summary>
-        /// Stock quantity.
+        /// Gets or sets stock quantity.
         /// </summary>
         public string qty { get; set; }
 
         /// <summary>
-        /// Shipping cost.
+        /// Gets or sets shipping cost.
         /// </summary>
         public string shipping_cost { get; set; }
 
         /// <summary>
-        /// Nett product price.
+        /// Gets or sets nett product price.
         /// </summary>
         public string Column3 { get; set; }
         #endregion

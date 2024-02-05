@@ -1,5 +1,3 @@
-using CsvHelper.Configuration.Attributes;
-
 namespace Zintegrujemy_Zadanie.Entities
 {
     /// <summary>
@@ -10,49 +8,49 @@ namespace Zintegrujemy_Zadanie.Entities
         #region Fields and Constants
 
         /// <summary>
-        /// Unique ID of the product.
+        /// Gets or sets unique ID of the product.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Product SKU, unique value created by warehouse.
+        /// Gets or sets product SKU, unique value created by warehouse.
         /// </summary>
         public string SKU { get; set; }
 
         /// <summary>
-        /// Product name.
+        /// Gets or sets product name.
         /// </summary>
         public string name { get; set; }
 
         /// <summary>
-        /// Product number.
+        /// Gets or sets product number.
         /// </summary>
         public string EAN { get; set; }
 
         /// <summary>
-        /// Supplier name.
+        /// Gets or sets supplier name.
         /// </summary>
         public string producer_name { get; set; }
 
         /// <summary>
-        /// Product Category.
+        /// Gets or sets product Category.
         /// </summary>
         public string category { get; set; }
 
         /// <summary>
-        /// Indicates whether the product is a wire 
+        /// Gets or sets indicator whether the product is a wire
         /// (if value is 1).
         /// </summary>
         public int? is_wire { get; set; }
 
         /// <summary>
-        /// Indicates whether the product is available
+        /// Gets or sets indicator whether the product is available
         /// for order (if value is 1).
         /// </summary>
         public int? available { get; set; }
 
         /// <summary>
-        ///  Indicates whether the product is shipped
+        ///  Gets or sets indicator whether the product is shipped
         ///  by supplier or warehouse. If value is 0,
         ///  it’s shipped by warehouse, if 1,
         ///  it’s shipped by supplier.
@@ -60,13 +58,12 @@ namespace Zintegrujemy_Zadanie.Entities
         public int? is_vendor { get; set; }
 
         /// <summary>
-        /// URL address to product’s image.
+        /// Gets or sets URL address to product’s image.
         /// </summary>
         public string default_image { get; set; }
 
-
         /// <summary>
-        /// Shipping time.
+        /// Gets or sets shipping time.
         /// </summary>
         public string shipping { get; set; }
 

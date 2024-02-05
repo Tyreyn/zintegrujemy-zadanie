@@ -1,12 +1,13 @@
-﻿using System.Globalization;
-using CsvHelper;
-using CsvHelper.Configuration;
-using Microsoft.AspNetCore.Components;
-using zintegrujemy_zadanie.Entities;
-using Zintegrujemy_Zadanie.Entities;
-
-namespace Zintegrujemy_Zadanie.Helpers
+﻿namespace Zintegrujemy_Zadanie.Helpers
 {
+    #region
+    using System.Globalization;
+    using CsvHelper;
+    using CsvHelper.Configuration;
+    using Microsoft.AspNetCore.Components;
+    using Zintegrujemy_Zadanie.Entities;
+    #endregion
+
     /// <summary>
     /// CSV reader class.
     /// </summary>
@@ -15,6 +16,15 @@ namespace Zintegrujemy_Zadanie.Helpers
         /// <summary>
         /// Read the specified csv file and write it in the corresponding class.
         /// </summary>
+        /// <param name="fileName">
+        /// The file name from which data is read.
+        /// </param>
+        /// <returns>
+        /// Read data.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// File not recognized.
+        /// </exception>
         public static object ReadFileAndSaveToList(string fileName)
         {
             string pathToFile = Path.Combine(GlobalVariables.ProjectDirectory, fileName);
@@ -23,13 +33,11 @@ namespace Zintegrujemy_Zadanie.Helpers
             {
                 HasHeaderRecord = true,
                 Delimiter = ";",
-                MissingFieldFound = null
+                MissingFieldFound = null,
             };
 
             using (StreamReader streamReader = new StreamReader(pathToFile))
             {
-                object records;
-
                 switch (tmpFileName[0])
                 {
                     case "Products":

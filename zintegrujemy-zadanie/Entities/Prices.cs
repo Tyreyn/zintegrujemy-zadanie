@@ -1,4 +1,4 @@
-﻿namespace zintegrujemy_zadanie.Entities
+﻿namespace Zintegrujemy_Zadanie.Entities
 {
     /// <summary>
     /// Prices entity class.
@@ -8,32 +8,32 @@
         #region Fields and Constants
 
         /// <summary>
-        /// Unique ID, only used by internal warehouse system.
+        /// Gets or sets unique ID, only used by internal warehouse system.
         /// </summary>
         public string Column1 { get; set; }
 
         /// <summary>
-        /// Product SKU, unique value created by warehouse.
+        /// Gets or sets product SKU, unique value created by warehouse.
         /// </summary>
         public string Column2 { get; set; }
 
         /// <summary>
-        /// Nett product price.
+        /// Gets or sets nett product price.
         /// </summary>
         public string Column3 { get; set; }
 
         /// <summary>
-        /// Nett product price after discount.
+        /// Gets or sets nett product price after discount.
         /// </summary>
         public string Column4 { get; set; }
 
         /// <summary>
-        /// VAT rate.
+        /// Gets or sets VAT rate.
         /// </summary>
         public string Column5 { get; set; }
 
         /// <summary>
-        /// Nett product price after discount for product logistic unit.
+        /// Gets or sets nett product price after discount for product logistic unit.
         /// </summary>
         public string Column6 { get; set; }
         #endregion
