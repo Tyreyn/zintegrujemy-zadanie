@@ -76,10 +76,10 @@
         public async void InsertDataToTable(object records, string tableName)
         {
             string[] tmpTableName = tableName.Split('.');
-            using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("MYSQL")))
+            using (SqlConnection myConn = new SqlConnection(this.configuration.GetConnectionString("SQLSERVER")))
             {
                 var rowsAffected = await myConn.ExecuteAsync(
-                    GlobalVariables.InsertSqlCommandDictionary[tmpTableName[0]],
+                    string.Format(GlobalVariables.InsertSqlCommandDictionary[tmpTableName[0]], GlobalVariables.SqlServerDatabaseName),
                     records);
 
                 Console.WriteLine($"{rowsAffected} row(s) inserted.");
@@ -103,7 +103,7 @@
                 try
                 {
                     productInformation = myConn.QueryFirst<ProductInformation>(
-                        GlobalVariables.SelectProductWhereSkuCommand,
+                        string.Format(GlobalVariables.SelectProductWhereSkuCommand, GlobalVariables.SqlServerDatabaseName),
                         new { sku = productSku });
                     Console.WriteLine($"Read {productInformation.ToString()}");
                     return productInformation;

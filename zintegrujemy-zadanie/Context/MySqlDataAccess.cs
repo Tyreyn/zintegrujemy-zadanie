@@ -75,10 +75,10 @@
             using (MySqlConnection myConn = new MySqlConnection(this.configuration.GetConnectionString("MYSQL")))
             {
                 var rowsAffected = await myConn.ExecuteAsync(
-                    GlobalVariables.InsertSqlCommandDictionary[tmpTableName[0]],
+                    string.Format(GlobalVariables.InsertSqlCommandDictionary[tmpTableName[0]], GlobalVariables.MySqlDatabaseName),
                     records);
 
-                Console.WriteLine($"{rowsAffected} row(s) inserted.");
+                Console.WriteLine($"{rowsAffected.ToString()} row(s) inserted.");
             }
         }
 
@@ -100,7 +100,7 @@
                 {
                     myConn.Open();
                     productInformation = myConn.QueryFirst<ProductInformation>(
-                        sql: GlobalVariables.SelectProductWhereSkuCommand,
+                        sql: string.Format(GlobalVariables.SelectProductWhereSkuCommand, GlobalVariables.MySqlDatabaseName),
                         param: new { sku = productSku });
                     Console.WriteLine($"Read {productInformation.ToString()}");
                     myConn.Close();
