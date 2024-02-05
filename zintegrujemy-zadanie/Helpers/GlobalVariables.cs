@@ -13,9 +13,14 @@
         public static readonly string ProjectDirectory = Directory.GetCurrentDirectory();
 
         /// <summary>
-        /// The database name.
+        /// The MySQL database name.
         /// </summary>
-        public static readonly string DataBaseName = "MagazineDB";
+        public static readonly string MySqlDatabaseName = "MagazineDB";
+
+        /// <summary>
+        /// The SQL server database name.
+        /// </summary>
+        public static readonly string SqlServerDatabaseName = "MagazineDB.dbo";
 
         /// <summary>
         /// The create SQL server database command.
@@ -133,16 +138,17 @@
             new Dictionary<string, string>
         {
                 {
-                    "Products",  @"
+                    "Products", @"
                     INSERT INTO
-                        MagazineDB.Product(ID,SKU,name,EAN,producer_name,category,
+                        {0}.Product(ID,SKU,name,EAN,producer_name,category,
                         is_wire,available,is_vendor,default_image)
                     VALUES(@ID,@SKU,@name,@EAN,@producer_name,@category,
-                        @is_wire,@available,@is_vendor,@default_image);" },
+                        @is_wire,@available,@is_vendor,@default_image);"
+                },
                 {
                     "Inventory", @"
                     INSERT INTO
-                        MagazineDB.Inventory(product_id, sku, unit, qty,
+                        {0}.Inventory(product_id, sku, unit, qty,
                         manufacturer_name, shipping, shipping_cost)
                     VALUES(@product_id,@sku,@unit,@qty,
                         @manufacturer_name,@shipping,@shipping_cost);"
@@ -150,7 +156,7 @@
                 {
                     "Prices", @"
                     INSERT INTO
-                        MagazineDB.Prices(Column1,Column2,Column3,Column4,Column5,Column6)
+                        {0}.Prices(Column1,Column2,Column3,Column4,Column5,Column6)
                     VALUES(@Column1,@Column2,@Column3,@Column4,@Column5,@Column6);"
                 },
         };
@@ -160,19 +166,19 @@
         /// </summary>
         public static readonly string SelectProductWhereSkuCommand = @"
             SELECT
-	            MagazineDB.Product.name,
-	            MagazineDB.Product.EAN,
-	            MagazineDB.Product.producer_name,
-	            MagazineDB.Product.category,
-	            MagazineDB.Product.default_image,
-	            MagazineDB.Inventory.qty,
-	            MagazineDB.Inventory.unit,
-	            MagazineDB.Prices.Column3,
-	            MagazineDB.Inventory.shipping_cost
-            FROM MagazineDB.Product
-            LEFT JOIN MagazineDB.Inventory on MagazineDB.Product.SKU = MagazineDB.Inventory.sku
-            LEFT JOIN MagazineDB.Prices on MagazineDB.Product.SKU = MagazineDB.Prices.Column2
-            WHERE MagazineDB.Product.SKU = @sku;";
+	            {0}.Product.name,
+	            {0}.Product.EAN,
+	            {0}.Product.producer_name,
+	            {0}.Product.category,
+	            {0}.Product.default_image,
+	            {0}.Inventory.qty,
+	            {0}.Inventory.unit,
+	            {0}.Prices.Column3,
+	            {0}.Inventory.shipping_cost
+            FROM {0}.Product
+            LEFT JOIN {0}.Inventory on {0}.Product.SKU = {0}.Inventory.sku
+            LEFT JOIN {0}.Prices on {0}.Product.SKU = {0}.Prices.Column2
+            WHERE {0}.Product.SKU = @sku;";
         #endregion
     }
 }
